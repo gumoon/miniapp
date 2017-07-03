@@ -39,6 +39,8 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapAdminRoutes();
+
         //
     }
 
@@ -69,5 +71,22 @@ class RouteServiceProvider extends ServiceProvider
              ->middleware('api')
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
+    }
+
+    /**
+     * 管理后台
+     *
+     * web中间件换成admin中间件吗？需求一致就没必要换
+     *
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::group([
+            'middleware' => 'web',
+            'namespace' => $this->namespace . '\Admin',
+            'prefix' => 'admin',
+        ], function ($router) {
+            require base_path('routes/admin.php');
+        });
     }
 }
