@@ -8,4 +8,4 @@
 
 //管理后台
 Route::get('/', 'IndexController@index');
-Route::post('/index/test', 'IndexController@test');
+Route::get('/index/test', 'IndexController@test');
