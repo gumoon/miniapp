@@ -10,57 +10,102 @@
     <meta name="author" content="">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>浏阳云商汇管理后台</title>
+    <title>管理后台</title>
 
     <link href="{{ asset('static/Semantic-UI-CSS-master/semantic.css') }}" rel="stylesheet">
-    
+
+    <style>
+        body {
+            overflow: auto;
+        }
+
+        .ui.leftmenu {
+            width: 153px !important;
+            position: absolute;
+            left: 8px;
+        }
+
+        .ui.main {
+            margin: 0 auto 0 182px !important;
+        }
+
+        .ui.main100 {
+            width: 100%;
+            height: 100%
+        }
+    </style>
     @yield('headcss')
 
 </head>
 
 <body>
 
+<!--- 对话框 --->
+<div class="ui dialog modal">
+    <i class="close icon"></i>
+    <div class="header"></div>
+    <div class="content">
+        <iframe name="fff" src="" width="100%" height="300" frameborder=0></iframe>
+    </div>
+</div>
+
 <div class="ui attached stackable menu">
     <div class="ui container">
         <a class="item">
             <i class="home icon"></i> Home
         </a>
-        <a class="item">
-            <i class="grid layout icon"></i> Browse
-        </a>
-        <a class="item">
-            <i class="mail icon"></i> Messages
-        </a>
-        <div class="ui simple dropdown item">
-            More
-            <i class="dropdown icon"></i>
-            <div class="menu">
-                <a class="item"><i class="edit icon"></i> Edit Profile</a>
-                <a class="item"><i class="globe icon"></i> Choose Language</a>
-                <a class="item"><i class="settings icon"></i> Account Settings</a>
-            </div>
-        </div>
-        <div class="right item">
-            <div class="ui input"><input type="text" placeholder="Search..."></div>
-        </div>
-    </div>
-</div>
-<div class="ui divider"></div>
-<div class="ui grid container">
-    <div class="three wide column">
-        @include('admin.layouts.navigation')
-    </div>
-    <div class="thirteen wide column">
-        @yield('content')
     </div>
 </div>
 
+@include('admin.layouts.navigation')
+
+<div class="ui main">
+        @yield('content')
+</div>
+
 <script src="{{ asset('static/jQuery/jquery-3.2.1.js') }}"></script>
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
+<script src="{{ asset('static/Vuejs/vue.js') }}"></script>
 <script src="{{ asset('static/Semantic-UI-CSS-master/semantic.js') }}"></script>
 
 @yield('thirdjs')
 
+<script>
+    $(function () {
+        $(window.parent.document).find("iframe[name=fff]").each(function () {
+            $(this).height($(document).height() + 25);
+
+            _height = $(document).width();
+            if (_height > 200) {
+                $(this).width(_height);
+            }
+        });
+    });
+
+    //异步删除请求；alert
+    function doDeleteAlert(url) {
+
+        if (confirm('确认删除？') == false) {
+            return false;
+        }
+        $.ajax({
+            cache: false,
+            type: "GET",
+            dataType: "json",
+            url: url,
+            data: {},
+            async: false,
+            error: function (request) {
+                alert("faild");
+            },
+            success: function (data) {
+                alert("success");
+                location.reload();
+            }
+
+        });
+    }
+
+</script>
 @yield('customjs')
 
 </body>

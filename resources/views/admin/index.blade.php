@@ -24,14 +24,13 @@
                 this.message = this.message.split('').reverse().join('')
             }
         }
-    })
+    });
 </script>
 @endsection
 
 @section('content')
 
     <div id="app">
-
         <h2 class="ui header" v-bind:title="message">@{{ message }}</h2>
         <button v-on:click="reverseMessage" class="ui primary button">逆转消息</button>
         <table class="ui celled table">

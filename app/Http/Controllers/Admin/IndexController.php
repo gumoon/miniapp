@@ -25,13 +25,15 @@ class IndexController extends Controller
 //        $shop = new Shop;
 //        $shop->s_name = '商户名';
 //        $shop->save();
-        $shops = Shop::all();
-        var_dump($shops);die();
+//        $shops = Shop::all();
+//        var_dump($shops);die();
         return view('admin.index', ['name' => 'huliang']);
     }
 
     public function test()
     {
-        return $this->successJson();
+        $shop = Shop::find(1);
+
+        return $this->successJson($shop);
     }
 }
