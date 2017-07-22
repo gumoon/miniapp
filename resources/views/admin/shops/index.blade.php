@@ -1,8 +1,13 @@
 @extends('admin.layouts.houtai')
 
-@section('headcss')
-
+@section('navigation')
+    @include('admin.layouts.navigation')
 @endsection
+
+@section('thirdjs')
+    <script src="{{ asset('static/js/dialog.js') }}"></script>
+@endsection
+
 
 @section('customjs')
 <script>
@@ -33,33 +38,32 @@
     <div id="app">
         <h2 class="ui header" v-bind:title="message">@{{ message }}</h2>
         <button v-on:click="reverseMessage" class="ui primary button">逆转消息</button>
+
         <table class="ui celled table">
             <thead>
-            <tr><th>标题</th>
-                <th>标题</th>
-                <th>标题</th>
+            <tr><th>商户ID</th>
+                <th>商户名</th>
+                <th>商户老板</th>
+                <th>商户电话</th>
+                <th>商户地址</th>
+                <th>商户简介</th>
+                <th>操作</th>
             </tr></thead>
             <tbody>
+            @foreach ($shops AS $shop)
             <tr>
-                <td>
-                    <div class="ui ribbon label">First</div>
-                </td>
-                <td>Cell</td>
-                <td>Cell</td>
+                <td>{{$shop->s_id}}</td>
+                <td>{{$shop->s_name}}</td>
+                <td>{{$shop->s_owner}}</td>
+                <td>{{$shop->s_tel}}</td>
+                <td>{{$shop->s_addr}}</td>
+                <td>{{$shop->s_intro}}</td>
+                <td><a onclick="openDialog('编辑商户', '/admin/shops/edit')">编辑</a></td>
             </tr>
-            <tr>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
+            @endforeach
             </tbody>
             <tfoot>
-            <tr><th colspan="3">
+            <tr><th colspan="7">
                     <div class="ui right floated pagination menu">
                         <a class="icon item">
                             <i class="left chevron icon"></i>

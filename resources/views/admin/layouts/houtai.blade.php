@@ -57,7 +57,8 @@
     </div>
 </div>
 
-@include('admin.layouts.navigation')
+{{--@include('admin.layouts.navigation')--}}
+@yield('navigation')
 
 <div class="ui main">
         @yield('content')
