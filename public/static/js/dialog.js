@@ -24,7 +24,7 @@ function openDialog(title,url,width,height){
 
 //关闭
 function closeDialog(c){
-    $('#popupModal').trigger('modal:hide');
+    $('#popupModal').modal('hide');
 
     if( c==undefined ){
         location.reload();

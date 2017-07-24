@@ -34,7 +34,7 @@
 @endsection
 
 @section('content')
-
+    <div class="ui main">
     <div id="app">
         <h2 class="ui header" v-bind:title="message">@{{ message }}</h2>
         <button v-on:click="reverseMessage" class="ui primary button">逆转消息</button>
@@ -80,6 +80,6 @@
             </tr></tfoot>
         </table>
     </div>
-
+    </div>
 @endsection
 

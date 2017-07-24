@@ -49,20 +49,11 @@
     </div>
 </div>
 
-<div class="ui attached stackable menu">
-    <div class="ui container">
-        <a class="item">
-            <i class="home icon"></i> Home
-        </a>
-    </div>
-</div>
-
 {{--@include('admin.layouts.navigation')--}}
 @yield('navigation')
 
-<div class="ui main">
-        @yield('content')
-</div>
+
+@yield('content')
 
 <script src="{{ asset('static/jQuery/jquery-3.2.1.js') }}"></script>
 <script src="{{ asset('static/Vuejs/vue.js') }}"></script>
@@ -77,7 +68,7 @@
 
             _height = $(document).width();
             if (_height > 200) {
-                $(this).width(_height);
+                //$(this).width(_height);
             }
         });
     });

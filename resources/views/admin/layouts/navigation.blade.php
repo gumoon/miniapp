@@ -1,3 +1,11 @@
+<div class="ui attached stackable menu">
+    <div class="ui container">
+        <a class="item">
+            <i class="home icon"></i> Home
+        </a>
+    </div>
+</div>
+
 <div class="ui vertical menu leftmenu" id="nav">
     <div class="item">
         <div class="header">Products</div>
