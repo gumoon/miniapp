@@ -22,6 +22,7 @@ class IndexController extends Controller
 
     public function index()
     {
+        return view('admin.index');
 //        $shop = new Shop;
 //        $shop->s_name = '商户名';
 //        $shop->save();
@@ -33,6 +34,7 @@ class IndexController extends Controller
     public function test()
     {
         $shop = Shop::find(1);
+        $shop->s_intro = nl2br($shop->s_intro);
 
         return $this->successJson($shop);
     }
