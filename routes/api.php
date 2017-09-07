@@ -18,3 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/shop/show', 'ShopController@show');
+Route::get('/shop/listByCatId', 'ShopController@listByCatId');

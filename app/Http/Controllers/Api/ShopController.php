@@ -21,4 +21,19 @@ class ShopController extends Controller
 
         return $this->successJson($shop);
     }
+
+    public function listByCatId(Request $request)
+    {
+        $catId = $request->input('cat_id', 0);
+
+        if($catId == 0) {
+            $catIds = [1,2,3,4,5,6,7,8,9];
+        } else {
+            $catIds = [$catId];
+        }
+
+        $products = [];
+
+        return $this->successJson($products);
+    }
 }
